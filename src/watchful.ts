@@ -112,6 +112,7 @@ export class Watchful extends Construct implements IWatchful {
   public addAlarm(alarm: cloudwatch.Alarm) {
     if (this.alarmTopic) {
       alarm.addAlarmAction(new cloudwatch_actions.SnsAction(this.alarmTopic));
+      alarm.addOkAction(new cloudwatch_actions.SnsAction(this.alarmTopic));
     }
 
     // create a list of IAlarmAction from ARNs
